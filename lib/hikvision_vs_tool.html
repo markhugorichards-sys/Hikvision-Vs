@@ -51,12 +51,12 @@ select,input[type=text],input[type=number],textarea{font-family:var(--body);font
 select:focus,input:focus,textarea:focus{outline:none;border-color:var(--red)}
 textarea{width:100%;min-height:64px;resize:vertical;font-family:var(--body);font-size:13.5px}
 .pillars{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-.pill{position:relative;cursor:pointer;user-select:none;border:1.5px solid var(--line2);border-radius:10px;padding:12px 15px;min-width:135px;background:var(--ink);transition:.15s}
-.pill .pk{font-family:var(--disp);font-weight:600;font-size:14px;color:#EAEFF4;display:flex;align-items:center;gap:8px}
-.pill .dot{width:10px;height:10px;border-radius:50%}
+.pill{position:relative;cursor:pointer;user-select:none;border:1.5px solid var(--line2);border-radius:10px;padding:12px 30px 12px 15px;min-width:135px;background:var(--ink);transition:.15s}
+.pill .pk{font-family:var(--disp);font-weight:600;font-size:14px;color:#EAEFF4;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.pill .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .pill .pd{font-size:10.5px;color:var(--txt-soft);margin-top:4px}
 .pill[data-on="1"]{border-color:var(--accent);background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
-.pill[data-on="1"]::after{content:"✓";position:absolute;top:9px;right:11px;color:var(--accent);font-weight:700;font-size:13px}
+.pill[data-on="1"]::after{content:"✓";position:absolute;top:12px;right:11px;line-height:1;color:var(--accent);font-weight:700;font-size:13px}
 .pill[data-k=send]{--accent:var(--send)}.pill[data-k=hardware]{--accent:var(--hw)}
 .pill[data-k=software]{--accent:var(--sw)}.pill[data-k=ai]{--accent:var(--ai)}
 .pill[data-k=sustainability]{--accent:var(--sus)}.pill[data-k=all]{--accent:var(--red)}
@@ -224,7 +224,7 @@ textarea{width:100%;min-height:64px;resize:vertical;font-family:var(--body);font
   <div class="tagline" id="lblTagline">Competitive Intelligence · Internal</div>
   <span id="saveStatus" class="save-status"></span>
   <select id="langSel" onchange="setLang(this.value)" style="margin-left:12px;background:var(--ink);color:var(--txt-soft);border:1px solid var(--line2);border-radius:7px;font-size:11px;padding:4px 7px">
-    <option value="en">EN</option><option value="de">DE</option><option value="es">ES</option>
+    <option value="en">EN</option><option value="de">DE</option><option value="es">ES</option><option value="zh">中文</option><option value="fr">FR</option>
   </select>
   <button onclick="toggleAdmin()" title="Show editing tools (add/edit/delete competitors and Hikvision models)"
     style="margin-left:8px;background:none;border:1px solid var(--line2);color:var(--txt-soft);border-radius:7px;width:26px;height:26px;cursor:pointer;font-size:13px;opacity:.7">⚙</button>
@@ -1018,6 +1018,88 @@ es: { ui: {
    sectors:{ "Education (Schools)":"Educación (Colegios)", "University & College":"Universidad y educación superior", "Retail":"Retail",
      "Sports & Entertainment":"Deporte y entretenimiento", "Corporate":"Corporativo", "Hospitality":"Hostelería",
      "Transport / Public":"Transporte / Sector público", "Other":"Otro" }
+},
+zh: { ui: {
+  tagline:"竞争情报 · 内部资料",
+  logOut:"退出登录", addHik:"+ 海康威视型号", editHik:"编辑海康型号", addComp:"+ 添加竞品", editComp:"编辑竞品",
+  generate:"生成客户版 →", buildComparison:"创建对比", hikModel:"海康威视型号", competitor:"竞品",
+  vertical:"行业", quantity:"数量", customerOpt:"客户（选填）", customerPh:"例如：Bexley Grammar School",
+  bespokeLabel:"定制说明（作为提案结尾备注打印）",
+  bespokePh:"添加与该客户或商机相关的具体信息——场地、招标编号、痛点、时间表。您自己的话，会附在提案末尾。",
+  showSections:"显示区块", reportSections:"报告区块 — 自定义报告内容",
+  presetSpec:"纯技术规格", presetFull:"完整报告",
+  modalAddComp:"添加竞品 ·", modalEditPrefix:"编辑", modalAddHik:"添加海康型号 ·", modalEditModel:"编辑",
+  saveBtn:"保存", saveCompBtn:"保存竞品", saveModelBtn:"保存型号", cancel:"取消", deleteEol:"删除 — 已停产",
+  identity:"基本信息", powerFigures:"功率数据（用于图表与计算器）", scores05:"评分 (0–5)",
+  certsHeading:"认证与可持续发展证明", featureCerts:"选择要展示的认证，对比对象：",
+  recommended:"推荐", whatMeansByRole:"对不同角色的意义", howToRead:"如何解读本对比。",
+  scorecard:"评分卡 — 加权对比", yourSaving:"您的节省", whyHikvision:"为什么选择海康威视",
+  runningCostCalc:"您的运行成本与碳排放节省", tariff:"电价 £/kWh", comparing:"对比对象", termYears:"年限",
+  notStated:"未标明", live:"实时", savedToTeam:"已保存至团队", loadedTeamData:"已加载团队数据",
+  noTeamDataYet:"暂无团队数据 — 首次保存后将创建", adminUnlocked:"编辑工具已解锁", adminHidden:"编辑工具已隐藏",
+  language:"语言",
+}, fields:{
+  accessibility:"无障碍软件", ai_licence:"AI 许可证", ambient:"环境光传感器", antiflicker:"防闪烁",
+  bluetooth:"蓝牙版本", bonding:"贴合工艺", brightness:"亮度", camera:"摄像头与麦克风", cms:"内容管理系统 (CMS)",
+  colour:"色深", colour_uniformity:"色彩均匀度", compute:"内置算力", content:"内容功能",
+  contrast:"对比度", control:"控制系统", eol:"报废回收服务", grey:"灰度等级", ip:"防护等级 / 使用环境",
+  lesson_licence:"授权模式", lesson_sw:"课堂软件", life:"使用寿命", mdm:"移动设备管理 (MDM)", mounting:"安装方式",
+  network:"网络", nfc:"NFC", os:"控制器 / 操作系统", os_roadmap:"操作系统路线图", packaging:"封装方式 (SMD/HOB/COB)",
+  panel:"面板", panel_life:"面板寿命", pitch:"像素间距", ports:"接口", power:"功耗（平均 / 最大）",
+  processor:"处理器", ram:"内存 (RAM)", recycling:"免费回收", refresh:"刷新率", reliability:"可靠性",
+  security:"安全模型", service:"维护access", speaker:"扬声器", sso:"单点登录 (SSO)", storage:"存储容量",
+  storage_expand:"可扩展存储", subtype:"子类型", surface:"表面 / 反光", touch_points:"触控点数",
+  touch_precision:"触控精度", touch_response:"触控响应时间", viewing:"可视角度", warranty:"保修", wifi:"Wi-Fi",
+}, pillars:{
+  "SEND First":"融合教育优先", "Hardware":"硬件", "Software & Platform":"软件与平台", "Sustainability":"可持续发展",
+  "Display & Image":"显示与画质", "Content & CMS":"内容与CMS", "Management & Security":"管理与安全",
+  "Image & Brightness":"画质与亮度", "LED Technology":"LED 技术", "Control & Content":"控制与内容",
+  "Serviceability & Build":"维护性与结构",
+}, cats:{ "Interactive Flat Panel":"交互式平板", "Digital Signage":"数字标牌", "LED":"LED显示屏" },
+   sectors:{ "Education (Schools)":"教育（中小学）", "University & College":"高等教育", "Retail":"零售",
+     "Sports & Entertainment":"体育与娱乐", "Corporate":"企业", "Hospitality":"酒店与餐饮",
+     "Transport / Public":"交通 / 公共部门", "Other":"其他" }
+},
+fr: { ui: {
+  tagline:"Intelligence Concurrentielle · Interne",
+  logOut:"Déconnexion", addHik:"+ Modèle Hikvision", editHik:"Modifier le modèle Hikvision", addComp:"+ Ajouter un concurrent", editComp:"Modifier le concurrent",
+  generate:"Générer pour le client →", buildComparison:"Créer une comparaison", hikModel:"Modèle Hikvision", competitor:"Concurrent",
+  vertical:"Secteur", quantity:"Quantité", customerOpt:"Client (facultatif)", customerPh:"ex. Bexley Grammar School",
+  bespokeLabel:"Contexte personnalisé (imprimé en note de fin dans la proposition)",
+  bespokePh:"Ajoutez tout élément propre à ce client ou à cette opportunité — le site, la référence de l'appel d'offres, le point de friction, le calendrier. Vos propres mots, insérés vers la fin de la proposition.",
+  showSections:"Afficher les sections", reportSections:"Sections du rapport — composez votre propre rapport",
+  presetSpec:"Fiche technique pure", presetFull:"Rapport complet",
+  modalAddComp:"Ajouter un concurrent ·", modalEditPrefix:"Modifier", modalAddHik:"Ajouter un modèle Hikvision ·", modalEditModel:"Modifier",
+  saveBtn:"Enregistrer", saveCompBtn:"Enregistrer le concurrent", saveModelBtn:"Enregistrer le modèle", cancel:"Annuler", deleteEol:"Supprimer — fin de vie",
+  identity:"Identité", powerFigures:"Données de consommation (pour le graphique et le calculateur)", scores05:"Notes (0–5)",
+  certsHeading:"Certifications et preuves de durabilité", featureCerts:"Mettre en avant les preuves face à",
+  recommended:"Recommandé", whatMeansByRole:"Ce que cela signifie, selon le rôle", howToRead:"Comment lire cette comparaison.",
+  scorecard:"Notation — comparaison pondérée", yourSaving:"Votre économie", whyHikvision:"Pourquoi Hikvision",
+  runningCostCalc:"Votre économie de fonctionnement et de CO₂", tariff:"Tarif £/kWh", comparing:"Comparaison", termYears:"Durée",
+  notStated:"Non précisé", live:"En direct", savedToTeam:"Enregistré pour l'équipe", loadedTeamData:"Données de l'équipe chargées",
+  noTeamDataYet:"Pas encore de données d'équipe — le premier enregistrement les crée", adminUnlocked:"Outils d'édition déverrouillés", adminHidden:"Outils d'édition masqués",
+  language:"Langue",
+}, fields:{
+  accessibility:"Logiciel d'accessibilité", ai_licence:"Licence IA", ambient:"Capteur de lumière ambiante", antiflicker:"Anti-scintillement",
+  bluetooth:"Version Bluetooth", bonding:"Collage (bonding)", brightness:"Luminosité", camera:"Caméra et microphone", cms:"CMS",
+  colour:"Profondeur de couleur", colour_uniformity:"Uniformité des couleurs", compute:"Puissance de calcul incluse", content:"Fonctions de contenu",
+  contrast:"Contraste", control:"Système de contrôle", eol:"Service de fin de vie", grey:"Niveaux de gris", ip:"Indice IP / environnement",
+  lesson_licence:"Modèle de licence", lesson_sw:"Logiciel pédagogique", life:"Durée de vie", mdm:"MDM / gouvernance", mounting:"Montage",
+  network:"Réseau", nfc:"NFC", os:"Contrôleur / OS", os_roadmap:"Feuille de route OS", packaging:"Encapsulation (SMD/HOB/COB)",
+  panel:"Panneau", panel_life:"Durée de vie du panneau", pitch:"Pas de pixel", ports:"Ports", power:"Puissance (moy. / max.)",
+  processor:"Processeur", ram:"Mémoire (RAM)", recycling:"Recyclage gratuit", refresh:"Taux de rafraîchissement", reliability:"Fiabilité",
+  security:"Modèle de sécurité", service:"Accès maintenance", speaker:"Haut-parleur", sso:"SSO", storage:"Stockage",
+  storage_expand:"Stockage extensible", subtype:"Sous-type", surface:"Surface / reflets", touch_points:"Points tactiles",
+  touch_precision:"Précision tactile", touch_response:"Temps de réponse tactile", viewing:"Angle de vision", warranty:"Garantie", wifi:"Wi-Fi",
+}, pillars:{
+  "SEND First":"Inclusion d'abord", "Hardware":"Matériel", "Software & Platform":"Logiciel et plateforme", "Sustainability":"Durabilité",
+  "Display & Image":"Affichage et image", "Content & CMS":"Contenu et CMS", "Management & Security":"Gestion et sécurité",
+  "Image & Brightness":"Image et luminosité", "LED Technology":"Technologie LED", "Control & Content":"Contrôle et contenu",
+  "Serviceability & Build":"Maintenabilité et construction",
+}, cats:{ "Interactive Flat Panel":"Écran plat interactif", "Digital Signage":"Affichage dynamique", "LED":"LED" },
+   sectors:{ "Education (Schools)":"Éducation (Écoles)", "University & College":"Enseignement supérieur", "Retail":"Commerce de détail",
+     "Sports & Entertainment":"Sport et divertissement", "Corporate":"Entreprise", "Hospitality":"Hôtellerie-restauration",
+     "Transport / Public":"Transport / Secteur public", "Other":"Autre" }
 }
 };
 function t(key){ return (I18N[currentLang] && I18N[currentLang].ui[key]) || I18N.en.ui[key] || key; }
